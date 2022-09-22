@@ -25,11 +25,6 @@ public class StadiumController {
 	@GetMapping("/")
 	public String test(Model model) {
 		List<Stadium> stadiumlist = stadiumService.야구장목록보기();
-		for (Stadium stadium : stadiumlist) {
-			System.out.println(stadium.getId());
-			System.out.println(stadium.getName());
-			System.out.println(stadium.getCreateDate());
-		}
 		model.addAttribute("stadiumlist", stadiumlist);
 		return "/boards/main";
 	}
@@ -41,6 +36,10 @@ public class StadiumController {
 	
 	@PostMapping("/stadium/create")
 	public @ResponseBody ResponseDto<?> createStadium(@RequestBody StardiumDto stardiumDto){
+		Stadium stadium = stadiumService.야구장이름검색(stardiumDto);
+		if(stadium != null) {
+			return new ResponseDto<>(-1, "야구장명 중복", null);
+		}
 		stadiumService.야구장만들기(stardiumDto);
 		return new ResponseDto<>(1, "", null);
 	}

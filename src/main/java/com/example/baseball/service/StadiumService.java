@@ -22,6 +22,10 @@ public class StadiumService {
 		List<Stadium> stadiumlist = stadiumDao.findAll();
 		return stadiumlist;
 	}
+	public Stadium 야구장이름검색(StardiumDto stardiumDto) {
+		Stadium stadium = stadiumDao.findByName(stardiumDto);
+		return stadium;
+	}
 	public void 야구장만들기(StardiumDto stardiumDto) {
 		stadiumDao.insert(stardiumDto);
 	}

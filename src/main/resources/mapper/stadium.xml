@@ -9,6 +9,9 @@
 		SELECT id, NAME, DATE_FORMAT(createDate, '%Y년-%m월-%d일') createDate,
 		ROW_NUMBER() OVER (ORDER BY name DESC) AS ROW FROM stadium
 	</select>
+	<select id="findByName" resultType="com.example.baseball.domain.stadium.Stadium">
+		SELECT * FROM stadium WHERE name = #{name}
+	</select>
 	<insert id="insert">
 	INSERT INTO stadium(name, createDate)
 	VALUE(#{name}, NOW());
