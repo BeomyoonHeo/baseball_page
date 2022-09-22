@@ -12,7 +12,7 @@
 	</select>
 	
 	<select id="findByName" resultType="com.example.baseball.domain.player.Player">
-		SELECT * FROM stadium WHERE name = #{name}
+		SELECT * FROM player WHERE name = #{name}
 	</select>
 	
 	<insert id="insert">
@@ -21,11 +21,11 @@
 	</insert>
 	
 	<delete id="deleteById">
-		DELETE FROM stadium WHERE id = #{id}
+		DELETE FROM player WHERE id = #{id}
 	</delete>
 	
 	<update id="update">
-		UPDATE stadium SET name = #{name} WHERE id =#{id} 
+		UPDATE player SET name = #{name} WHERE id =#{id} 
 	</update>
 
 

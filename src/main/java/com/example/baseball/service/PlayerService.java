@@ -24,4 +24,7 @@ public class PlayerService {
 	public void 플레이어등록(CreatePlayerDto createPlayerDto) {
 		playerDao.insert(createPlayerDto);
 	}
+	public void 플레이어삭제(Integer id) {
+		playerDao.deleteById(id);
+	}
 }

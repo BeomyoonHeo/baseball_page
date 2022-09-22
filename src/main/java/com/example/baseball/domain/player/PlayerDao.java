@@ -9,5 +9,6 @@ public interface PlayerDao {
 	
 	public List<PlayerListDto> findAll();
 	public void insert(CreatePlayerDto createPlayerDto);
+	public void deleteById(Integer id);
 
 }

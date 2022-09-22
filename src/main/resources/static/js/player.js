@@ -6,9 +6,21 @@ $("#btnConfirm").click(() => {
 	createPlayer();
 });
 
-$(".btnPlayerDelete").on("click",()=>{
-	alert($(".btnPlayerDelete").attr("value"));
-});
+
+function deletePlayer(id){
+	$.ajax("/Player/delete/"+id,{
+		type:"DELETE",
+		dataType:"json",
+	}).done((res)=>{
+		if(res.code == 1){
+			alert(res.msg);
+			location.href="/player";
+		}else{
+			alert("삭제실패");
+			return;
+		}
+	});
+}
 
 
 function createPlayer() {

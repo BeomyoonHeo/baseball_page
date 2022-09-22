@@ -23,7 +23,7 @@
 				<td>${player.name}</td>
 				<td>${player.createDate}</td>
 				<td><a href="/player/update/${player.id}">수정</a></td>
-				<td><button class="btn btn-danger btnPlayerDelete" value="${player.id}">삭제</button></td>
+				<td><button onclick=deletePlayer(${player.id}) class="btn btn-danger"value="${player.id}">삭제</button></td>
 			</tr>
 		</c:forEach>
 	</table>

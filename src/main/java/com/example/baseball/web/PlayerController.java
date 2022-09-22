@@ -55,8 +55,9 @@ public class PlayerController {
 	public String stadiumUpdateForm(@PathVariable Integer id) {
 		return null;
 	}
-	@DeleteMapping("/player/delete/{id}")
+	@DeleteMapping("/Player/delete/{id}")
 	public @ResponseBody ResponseDto<?> stadiumDelete(@PathVariable Integer id) {
-		return new ResponseDto<>(1, "야구장 삭제 완료", null);
+		playerService.플레이어삭제(id);
+		return new ResponseDto<>(1, "플레이어 삭제 완료", null);
 	}
 }
