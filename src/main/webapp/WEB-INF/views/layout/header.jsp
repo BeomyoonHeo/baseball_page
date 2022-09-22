@@ -22,7 +22,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     />
-    <link href="/css/style.css" rel="stylesheet">
   </head>
   <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -40,10 +39,10 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <ul class="navbar-nav">
 
                 <li class="nav-item">
-                  <a class="nav-link" href="/loginForm">경기장 목록</a>
+                  <a class="nav-link" href="/">경기장 목록</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/joinForm">경기장 등록</a>
+                  <a class="nav-link" href="/join_stadium_form">경기장 등록</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/s/boards/write">팀 목록</a>

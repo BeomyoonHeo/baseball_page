@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 
 import com.example.baseball.domain.stadium.Stadium;
 import com.example.baseball.domain.stadium.StadiumDao;
+import com.example.baseball.web.dto.request.StardiumDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,5 +21,8 @@ public class StadiumService {
 	public List<Stadium> 야구장목록보기(){
 		List<Stadium> stadiumlist = stadiumDao.findAll();
 		return stadiumlist;
+	}
+	public void 야구장만들기(StardiumDto stardiumDto) {
+		stadiumDao.insert(stardiumDto);
 	}
 }
