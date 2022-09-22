@@ -4,9 +4,9 @@
 <h1 style="text-align: center">팀 등록 페이지 입니다.</h1>
 <div class="container mt-3">
 
-	<div class="input-group mb-1" style="width: 500px; left: 30%">
+	<div class="input-group mb-1" style="width: 700px; left:20%; display: flex; justify-content: space-around;">
 	<p>야구장 이름 :</p> 
-    <select name="dog-names" id="stadiumlist">
+    <select id="stadiumlist">
     <c:forEach var="stadium" items="${Stadiumlist}">
      <option value="${stadium.id}">${stadium.name}</option>
     </c:forEach>

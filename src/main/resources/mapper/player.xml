@@ -16,8 +16,8 @@
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO stadium(name, createDate)
-		VALUE(#{name}, NOW());
+		INSERT INTO player(name, teamId, position, createDate)
+		VALUE(#{name}, #{teamId}, #{position}, NOW());
 	</insert>
 	
 	<delete id="deleteById">

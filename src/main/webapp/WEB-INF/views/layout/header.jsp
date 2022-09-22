@@ -36,7 +36,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav" style="justify-content: space-around;">
 
                 <li class="nav-item">
                   <a class="nav-link" href="/">경기장 목록</a>
@@ -56,7 +56,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                   <a class="nav-link" href="/player">선수 목록</a>
                 </li>
                     <li class="nav-item">
-                  <a class="nav-link" href="/logout">선수 등록</a>
+                  <a class="nav-link" href="/join_player_form">선수 등록</a>
                 </li>
                     <li class="nav-item">
                   <a class="nav-link" href="/logout">팀별 포지션 목록</a>

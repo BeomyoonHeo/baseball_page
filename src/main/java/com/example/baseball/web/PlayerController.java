@@ -15,9 +15,12 @@ import com.example.baseball.domain.player.PlayerDao;
 import com.example.baseball.domain.stadium.Stadium;
 import com.example.baseball.service.PlayerService;
 import com.example.baseball.service.StadiumService;
+import com.example.baseball.service.TeamService;
 import com.example.baseball.web.dto.ResponseDto;
+import com.example.baseball.web.dto.request.CreatePlayerDto;
 import com.example.baseball.web.dto.request.StadiumDto;
 import com.example.baseball.web.dto.response.PlayerListDto;
+import com.example.baseball.web.dto.response.TeamListDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,7 +28,8 @@ import lombok.RequiredArgsConstructor;
 @Controller
 public class PlayerController {
 	
-	public final PlayerService playerService;
+	private final PlayerService playerService;
+	private final TeamService teamService;
 	
 	@GetMapping("/player")
 	public String test(Model model) {
@@ -35,18 +39,20 @@ public class PlayerController {
 	}
 	
 	@GetMapping("/join_player_form")
-	public String joinStardiumForm() {
-		return "/stadium/joinStadium";
+	public String joinStardiumForm(Model model) {
+		List<TeamListDto> list = teamService.팀전체보기();
+		model.addAttribute("teamlist", list);
+		return "/player/joinPlayer";
 	}
 	
 	@PostMapping("/player/create")
-	public @ResponseBody ResponseDto<?> createStadium(@RequestBody StadiumDto stardiumDto){
+	public @ResponseBody ResponseDto<?> createStadium(@RequestBody CreatePlayerDto createPlayerDto){
+		playerService.플레이어등록(createPlayerDto);
 		return new ResponseDto<>(1, "", null);
 	}
 	
 	@GetMapping("/player/update/{id}")
 	public String stadiumUpdateForm(@PathVariable Integer id) {
-		System.out.println(id);
 		return null;
 	}
 	@DeleteMapping("/player/delete/{id}")
