@@ -6,6 +6,10 @@ $("#btnConfirm").click(() => {
 	createPlayer();
 });
 
+$(".btnPlayerDelete").on("click",()=>{
+	alert($(".btnPlayerDelete").attr("value"));
+});
+
 
 function createPlayer() {
 	let team = {
