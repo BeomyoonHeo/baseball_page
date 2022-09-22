@@ -4,7 +4,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Blog</title>
+    <title>야구쟝</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -27,7 +27,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
   <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/boards">Blog</a>
+        <a class="navbar-brand" href="/">야구쟝</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -38,29 +38,36 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav">
-            <c:choose>
-              <c:when test="${empty principal}">
+
                 <li class="nav-item">
-                  <a class="nav-link" href="/loginForm">로그인</a>
+                  <a class="nav-link" href="/loginForm">경기장 목록</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/joinForm">회원가입</a>
+                  <a class="nav-link" href="/joinForm">경기장 등록</a>
                 </li>
-              </c:when>
-              <c:otherwise>
                 <li class="nav-item">
-                  <a class="nav-link" href="/s/boards/write">글쓰기</a>
+                  <a class="nav-link" href="/s/boards/write">팀 목록</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/s/users/${principal.id}"
-                    >회원정보보기</a
+                    >팀 등록</a
                   >
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/logout">로그아웃</a>
+                  <a class="nav-link" href="/logout">선수 목록</a>
                 </li>
-              </c:otherwise>
-            </c:choose>
+                    <li class="nav-item">
+                  <a class="nav-link" href="/logout">선수 등록</a>
+                </li>
+                    <li class="nav-item">
+                  <a class="nav-link" href="/logout">팀별 포지션 목록</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/logout">퇴출된 선수 목록</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/logout">퇴출 사유 등록</a>
+                </li>
           </ul>
         </div>
       </div>
