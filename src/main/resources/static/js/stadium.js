@@ -2,6 +2,29 @@ $("#btnConfirm").click(()=>{
 	creatStadium();
 });
 
+$("#btnStadiumDelete").click(()=>{
+	let id = $("#btnStadiumDelete").val();
+	alert(id);
+	//deleteStadium();
+});
+
+function deleteStadium(){
+	let id = $("#stadiumid").val();
+	
+	$.ajax("/stadium/delete/"+id,{
+		type: "DELETE",
+		dataType: "json"
+	}).done((res)=>{
+		if(res.code==1){
+			alert("삭제완료");
+			location.href="/";
+		}else{
+			alert("삭제불가");
+			return;
+		}
+	});
+}
+
 function creatStadium(){
 	let stadium = {
 		name:$("#name").val()

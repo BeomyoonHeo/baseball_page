@@ -2,15 +2,15 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.baseball.domain.stadium.StadiumDao">
+<mapper namespace="com.example.baseball.domain.team.TeamDao">
 
 
-	<select id="findAll" resultType="com.example.baseball.domain.stadium.Stadium">
+	<select id="findAll" resultType="com.example.baseball.domain.team.Team">
 		SELECT id, NAME, DATE_FORMAT(createDate, '%Y년-%m월-%d일') createDate,
 		ROW_NUMBER() OVER (ORDER BY name DESC) AS ROW FROM stadium
 	</select>
 	
-	<select id="findByName" resultType="com.example.baseball.domain.stadium.Stadium">
+	<select id="findByName" resultType="com.example.baseball.domain.team.Team">
 		SELECT * FROM stadium WHERE name = #{name}
 	</select>
 	

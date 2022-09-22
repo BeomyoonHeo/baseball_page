@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class StardiumDto {
+public class StadiumDto {
 	private String name;
 
 }

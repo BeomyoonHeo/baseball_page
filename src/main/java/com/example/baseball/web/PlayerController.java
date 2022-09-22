@@ -11,49 +11,49 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.baseball.domain.player.PlayerDao;
 import com.example.baseball.domain.stadium.Stadium;
+import com.example.baseball.service.PlayerService;
 import com.example.baseball.service.StadiumService;
 import com.example.baseball.web.dto.ResponseDto;
 import com.example.baseball.web.dto.request.StadiumDto;
+import com.example.baseball.web.dto.response.PlayerListDto;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Controller
-public class StadiumController {
+public class PlayerController {
 	
-	public final StadiumService stadiumService;
+	public final PlayerService playerService;
 	
-	@GetMapping({"/", "/stadium"})
+	@GetMapping("/player")
 	public String test(Model model) {
-		List<Stadium> stadiumlist = stadiumService.야구장목록보기();
-		model.addAttribute("stadiumlist", stadiumlist);
-		return "/stadium/main";
+		List<PlayerListDto> list = playerService.플레이어전체보기();
+		for (PlayerListDto playerListDto : list) {
+			System.out.println(playerListDto.getTeamname());
+		}
+		model.addAttribute("playerlist", list);
+		return "/player/main";
 	}
 	
-	@GetMapping("/join_stadium_form")
+	@GetMapping("/join_player_form")
 	public String joinStardiumForm() {
 		return "/stadium/joinStadium";
 	}
 	
-	@PostMapping("/stadium/create")
+	@PostMapping("/player/create")
 	public @ResponseBody ResponseDto<?> createStadium(@RequestBody StadiumDto stardiumDto){
-		Stadium stadium = stadiumService.야구장이름검색(stardiumDto);
-		if(stadium != null) {
-			return new ResponseDto<>(-1, "야구장명 중복", null);
-		}
-		stadiumService.야구장만들기(stardiumDto);
 		return new ResponseDto<>(1, "", null);
 	}
 	
-	@GetMapping("/stadium/update/{id}")
+	@GetMapping("/player/update/{id}")
 	public String stadiumUpdateForm(@PathVariable Integer id) {
 		System.out.println(id);
 		return null;
 	}
-	@DeleteMapping("/stadium/delete/{id}")
+	@DeleteMapping("/player/delete/{id}")
 	public @ResponseBody ResponseDto<?> stadiumDelete(@PathVariable Integer id) {
-		stadiumService.야구장삭제(id);
 		return new ResponseDto<>(1, "야구장 삭제 완료", null);
 	}
 }

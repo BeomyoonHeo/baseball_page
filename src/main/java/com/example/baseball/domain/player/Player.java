@@ -1,14 +1,14 @@
-package com.example.baseball.domain.stadium;
-
+package com.example.baseball.domain.player;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class Stadium {
+public class Player {
 	private Integer id;
 	private String name;
+	private Integer teamId;
+	private String position;
 	private String createDate;
-	private Integer ROW;
 }

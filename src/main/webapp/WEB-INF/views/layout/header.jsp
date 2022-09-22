@@ -45,7 +45,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                   <a class="nav-link" href="/join_stadium_form">경기장 등록</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/s/boards/write">팀 목록</a>
+                  <a class="nav-link" href="/player">팀 목록</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/s/users/${principal.id}"
@@ -53,7 +53,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                   >
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/logout">선수 목록</a>
+                  <a class="nav-link" href="/player">선수 목록</a>
                 </li>
                     <li class="nav-item">
                   <a class="nav-link" href="/logout">선수 등록</a>
