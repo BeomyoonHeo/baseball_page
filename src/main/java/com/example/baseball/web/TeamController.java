@@ -13,44 +13,52 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.baseball.domain.player.PlayerDao;
 import com.example.baseball.domain.stadium.Stadium;
+import com.example.baseball.domain.team.Team;
+import com.example.baseball.domain.team.TeamDao;
 import com.example.baseball.service.PlayerService;
 import com.example.baseball.service.StadiumService;
+import com.example.baseball.service.TeamService;
 import com.example.baseball.web.dto.ResponseDto;
+import com.example.baseball.web.dto.request.CreateTeamDto;
 import com.example.baseball.web.dto.request.StadiumDto;
 import com.example.baseball.web.dto.response.PlayerListDto;
+import com.example.baseball.web.dto.response.TeamListDto;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Controller
-public class PlayerController {
+public class TeamController {
 	
-	public final PlayerService playerService;
+	private final TeamService teamService;
+	private final StadiumService stadiumService;
 	
-	@GetMapping("/player")
+	@GetMapping("/team")
 	public String test(Model model) {
-		List<PlayerListDto> list = playerService.플레이어전체보기();
-		model.addAttribute("playerlist", list);
-		return "/player/main";
+		List<TeamListDto> list = teamService.팀전체보기();
+		model.addAttribute("teamlist", list);
+		return "/team/main";
 	}
 	
-	@GetMapping("/join_player_form")
-	public String joinStardiumForm() {
-		return "/stadium/joinStadium";
+	@GetMapping("/join_team_form")
+	public String joinStardiumForm(Model model) {
+		List<Stadium> list = stadiumService.야구장목록보기();
+		model.addAttribute("Stadiumlist", list);
+		return "/team/joinTeam";
 	}
 	
-	@PostMapping("/player/create")
-	public @ResponseBody ResponseDto<?> createStadium(@RequestBody StadiumDto stardiumDto){
+	@PostMapping("/team/create")
+	public @ResponseBody ResponseDto<?> createTeam(@RequestBody CreateTeamDto createTeamDto){
+		teamService.팀생성(createTeamDto);
 		return new ResponseDto<>(1, "", null);
 	}
 	
-	@GetMapping("/player/update/{id}")
+	@GetMapping("/team/update/{id}")
 	public String stadiumUpdateForm(@PathVariable Integer id) {
-		System.out.println(id);
 		return null;
 	}
-	@DeleteMapping("/player/delete/{id}")
+	@DeleteMapping("/team/delete/{id}")
 	public @ResponseBody ResponseDto<?> stadiumDelete(@PathVariable Integer id) {
-		return new ResponseDto<>(1, "야구장 삭제 완료", null);
+		return new ResponseDto<>(1, "팀 삭제 완료", null);
 	}
 }

@@ -45,10 +45,10 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                   <a class="nav-link" href="/join_stadium_form">경기장 등록</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/player">팀 목록</a>
+                  <a class="nav-link" href="/team">팀 목록</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/s/users/${principal.id}"
+                  <a class="nav-link" href="/join_team_form"
                     >팀 등록</a
                   >
                 </li>

@@ -5,26 +5,30 @@
 <mapper namespace="com.example.baseball.domain.team.TeamDao">
 
 
-	<select id="findAll" resultType="com.example.baseball.domain.team.Team">
-		SELECT id, NAME, DATE_FORMAT(createDate, '%Y년-%m월-%d일') createDate,
-		ROW_NUMBER() OVER (ORDER BY name DESC) AS ROW FROM stadium
+	<select id="findAll"
+		resultType="com.example.baseball.web.dto.response.TeamListDto">
+		SELECT t.id, (SELECT s.NAME FROM stadium s WHERE s.id = t.stadiumid)
+		stadiumname, t.name, DATE_FORMAT(t.createDate, '%Y년-%m월-%d일')createDate,
+		ROW_NUMBER() OVER (ORDER BY t.name ASC) AS ROW
+		FROM team t;
 	</select>
-	
-	<select id="findByName" resultType="com.example.baseball.domain.team.Team">
+
+	<select id="findByName"
+		resultType="com.example.baseball.domain.team.Team">
 		SELECT * FROM stadium WHERE name = #{name}
 	</select>
-	
+
 	<insert id="insert">
-		INSERT INTO stadium(name, createDate)
-		VALUE(#{name}, NOW());
+		INSERT INTO team(name, stadiumId, CreateDate)
+		VALUE(#{name},#{stadiumId} , NOW());
 	</insert>
-	
+
 	<delete id="deleteById">
 		DELETE FROM stadium WHERE id = #{id}
 	</delete>
-	
+
 	<update id="update">
-		UPDATE stadium SET name = #{name} WHERE id =#{id} 
+		UPDATE stadium SET name = #{name} WHERE id =#{id}
 	</update>
 
 
