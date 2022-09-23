@@ -59,7 +59,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                   <a class="nav-link" href="/join_player_form">선수 등록</a>
                 </li>
                     <li class="nav-item">
-                  <a class="nav-link" href="/logout">팀별 포지션 목록</a>
+                  <a class="nav-link" href="/player/position">팀별 포지션 목록</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/logout">퇴출된 선수 목록</a>

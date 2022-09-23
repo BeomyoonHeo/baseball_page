@@ -23,6 +23,7 @@ import com.example.baseball.web.dto.request.CreatePlayerDto;
 import com.example.baseball.web.dto.request.StadiumDto;
 import com.example.baseball.web.dto.response.PlayerListDto;
 import com.example.baseball.web.dto.response.TeamListDto;
+import com.example.baseball.web.dto.response.player.PlayerPositionForGroup;
 
 import lombok.RequiredArgsConstructor;
 
@@ -34,10 +35,17 @@ public class PlayerController {
 	private final TeamService teamService;
 	
 	@GetMapping("/player")
-	public String test(Model model) {
+	public String playerList(Model model) {
 		List<PlayerListDto> list = playerService.플레이어전체보기();
 		model.addAttribute("playerlist", list);
 		return "/player/main";
+	}
+	
+	@GetMapping("/player/position")
+	public String PlayerListForPosition(Model model) {
+		List<PlayerPositionForGroup> list = playerService.포지션별플레이어보기();
+		model.addAttribute("playerlist", list);
+		return "/player/groupforposition";
 	}
 	
 	@GetMapping("/join_player_form")

@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.baseball.domain.player.PlayerDao;
 import com.example.baseball.web.dto.request.CreatePlayerDto;
 import com.example.baseball.web.dto.response.PlayerListDto;
+import com.example.baseball.web.dto.response.player.PlayerPositionForGroup;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,9 +23,15 @@ public class PlayerService {
 		return list;
 	}
 	
+	public List<PlayerPositionForGroup> 포지션별플레이어보기(){
+		List<PlayerPositionForGroup> list = playerDao.findGroupForPosition();
+		return list;
+	}
+	
 	public void 플레이어등록(CreatePlayerDto createPlayerDto) {
 		playerDao.insert(createPlayerDto);
 	}
+	
 	@Transactional(rollbackFor = {RuntimeException.class})
 	public void 플레이어삭제(List<Integer> id) {
 		for (Integer integer : id) {

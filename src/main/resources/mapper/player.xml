@@ -5,27 +5,43 @@
 <mapper namespace="com.example.baseball.domain.player.PlayerDao">
 
 
-	<select id="findAll" resultType="com.example.baseball.web.dto.response.PlayerListDto">
-		SELECT id, (SELECT NAME FROM team t WHERE t.id = p.teamId) teamname,
-		p.name,p.position ,DATE_FORMAT(p.createDate, '%Y년-%m월-%d일')createDate, 
+	<select id="findAll"
+		resultType="com.example.baseball.web.dto.response.PlayerListDto">
+		SELECT id, (SELECT NAME FROM team t WHERE t.id = p.teamId)
+		teamname,
+		p.name,p.position ,DATE_FORMAT(p.createDate,
+		'%Y년-%m월-%d일')createDate,
 		ROW_NUMBER() OVER (ORDER BY p.name DESC) AS ROW FROM player p
 	</select>
-	
-	<select id="findByName" resultType="com.example.baseball.domain.player.Player">
+
+	<select id="findGroupForPosition"
+		resultType="com.example.baseball.web.dto.response.player.PlayerPositionForGroup">
+		SELECT
+		POSITION,
+		max(if(teamid=1, NAME, "")) group1,
+		max(if(teamid=2, NAME, "")) group2,
+		max(if(teamid=3, NAME, "")) group3
+		FROM player
+		GROUP BY position
+	</select>
+
+	<select id="findByName"
+		resultType="com.example.baseball.domain.player.Player">
 		SELECT * FROM player WHERE name = #{name}
 	</select>
-	
+
 	<insert id="insert">
-		INSERT INTO player(name, teamId, position, createDate)
+		INSERT INTO player(name, teamId, position,
+		createDate)
 		VALUE(#{name}, #{teamId}, #{position}, NOW());
 	</insert>
-	
+
 	<delete id="deleteById">
 		DELETE FROM player WHERE id = #{id}
 	</delete>
-	
+
 	<update id="update">
-		UPDATE player SET name = #{name} WHERE id =#{id} 
+		UPDATE player SET name = #{name} WHERE id =#{id}
 	</update>
 
 
