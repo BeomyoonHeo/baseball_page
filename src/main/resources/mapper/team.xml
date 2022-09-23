@@ -24,11 +24,11 @@
 	</insert>
 
 	<delete id="deleteById">
-		DELETE FROM stadium WHERE id = #{id}
+		DELETE FROM team WHERE id = #{id}
 	</delete>
 
 	<update id="update">
-		UPDATE stadium SET name = #{name} WHERE id =#{id}
+		UPDATE team SET name = #{name} WHERE id =#{id}
 	</update>
 
 

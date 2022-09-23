@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.baseball.domain.stadium.Stadium;
@@ -51,8 +52,9 @@ public class StadiumController {
 		System.out.println(id);
 		return null;
 	}
-	@DeleteMapping("/stadium/delete/{id}")
-	public @ResponseBody ResponseDto<?> stadiumDelete(@PathVariable Integer id) {
+	
+	@DeleteMapping("/stadium/delete")
+	public @ResponseBody ResponseDto<?> stadiumDelete(@RequestParam(value = "deletelist[]")  List<Integer> id) {
 		stadiumService.야구장삭제(id);
 		return new ResponseDto<>(1, "야구장 삭제 완료", null);
 	}

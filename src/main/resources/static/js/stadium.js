@@ -2,25 +2,41 @@ $("#btnConfirm").click(()=>{
 	creatStadium();
 });
 
-$("#btnStadiumDelete").click(()=>{
-	let id = $("#btnStadiumDelete").val();
-	alert(id);
-	//deleteStadium();
-});
+$("#btnDelete").click(() => {
+	DeletestadiumList();
+})
 
-function deleteStadium(){
-	let id = $("#stadiumid").val();
+function DeletestadiumList() {
+
+	let chkArray = new Array();
+
+	$("input[name='checkbox']:checked").each(function() {
+		let item = $(this).val();
+		chkArray.push(item);
+	});
+
+	if (chkArray.length < 1) {
+		alert("값을 선택해주시기 바랍니다.");
+		return;
+	}
+	deleteStadium(chkArray);
+
+}
+
+function deleteStadium(id) {
 	
-	$.ajax("/stadium/delete/"+id,{
+	
+	$.ajax("/stadium/delete", {
 		type: "DELETE",
-		dataType: "json"
+		dataType: "json",
+		data:{deletelist:id},
+		Headers:{
+			"Content-Type":"application/x-www-form-urlencoded; charset=UTF-8"
+		}
 	}).done((res)=>{
-		if(res.code==1){
-			alert("삭제완료");
-			location.href="/";
-		}else{
-			alert("삭제불가");
-			return;
+		if(res.code == 1){
+			alert(res.msg);
+			location.href="/stadium";
 		}
 	});
 }

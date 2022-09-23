@@ -3,6 +3,7 @@
 <%@ include file="../layout/header.jsp"%>
 <h1 style="text-align: center">경기장 목록 페이지 입니다.</h1>
 <div class="container mt-3">
+<div style="text-align: right"><button id="btnDelete" class="btn btn-danger">삭제하기</button></div>
 	<table class="table table-bordered" style="text-align: center">
 		<thead>
 			<tr>
@@ -19,7 +20,7 @@
 				<td>${stadium.name}</td>
 				<td>${stadium.createDate}</td>
 				<td><a href="/stadium/update/${stadium.id}">수정</a></td>
-				<td><button id="btnStadiumDelete" class="btn btn-danger" value="${stadium.id}">삭제</button></td>
+				<td><input class="form-check-input" type="checkbox" name="checkbox" value="${stadium.id}"></td>
 			</tr>
 		</c:forEach>
 	</table>
