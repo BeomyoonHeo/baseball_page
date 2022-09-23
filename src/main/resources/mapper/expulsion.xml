@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.example.baseball.domain.expulsion.ExpulsionDao">
+
+
+	<select id="findAll"
+		resultType="com.example.baseball.web.dto.response.expulsion.ExpulsionDto">
+		SELECT ROW_NUMBER() OVER (ORDER BY e.playerid ASC) AS ROW,
+		(SELECT NAME FROM team t WHERE t.id = p.teamId) teamname, p.position,
+		p.name, e.reason, DATE_FORMAT(e.createDate, '%Y년-%m월-%d일')createDate
+		FROM expulsion e JOIN player p ON p.id = e.playerId;
+	</select>
+
+	<insert id="insert">
+		INSERT INTO expulsion(reasion, playerId, createDate)
+		VALUE(#{reasion}, #{playerId}, NOW());
+	</insert>
+
+	<delete id="deleteById">
+		DELETE FROM expulsion WHERE id = #{id}
+	</delete>
+
+	<update id="update">
+		UPDATE expulsion SET name = #{name} WHERE id =#{id}
+	</update>
+
+
+</mapper>
