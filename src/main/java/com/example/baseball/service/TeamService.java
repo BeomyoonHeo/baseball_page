@@ -27,4 +27,8 @@ public class TeamService {
 		teamDao.insert(createTeamDto);
 	}
 	
+	public void 팀삭제(Integer id) {
+		teamDao.deleteById(id);
+	}
+	
 }

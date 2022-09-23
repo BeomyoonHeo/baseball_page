@@ -1,5 +1,6 @@
 package com.example.baseball.web;
 
+import java.sql.Array;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.baseball.domain.player.PlayerDao;
@@ -55,8 +57,8 @@ public class PlayerController {
 	public String stadiumUpdateForm(@PathVariable Integer id) {
 		return null;
 	}
-	@DeleteMapping("/Player/delete/{id}")
-	public @ResponseBody ResponseDto<?> stadiumDelete(@PathVariable Integer id) {
+	@DeleteMapping("/Player/delete/")
+	public @ResponseBody ResponseDto<?> stadiumDelete(@RequestParam(value = "deletelist[]") List<Integer> id) {
 		playerService.플레이어삭제(id);
 		return new ResponseDto<>(1, "플레이어 삭제 완료", null);
 	}

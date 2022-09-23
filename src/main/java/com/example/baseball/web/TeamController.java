@@ -59,6 +59,7 @@ public class TeamController {
 	}
 	@DeleteMapping("/team/delete/{id}")
 	public @ResponseBody ResponseDto<?> stadiumDelete(@PathVariable Integer id) {
+		teamService.팀삭제(id);
 		return new ResponseDto<>(1, "팀 삭제 완료", null);
 	}
 }

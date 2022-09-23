@@ -6,18 +6,44 @@ $("#btnConfirm").click(() => {
 	createPlayer();
 });
 
+$("#btnDelete").click(()=>{
+	DeletePlayerList();
+})
 
-function deletePlayer(id){
-	$.ajax("/Player/delete/"+id,{
-		type:"DELETE",
-		dataType:"json",
+
+function DeletePlayerList() {
+
+	let chkArray = new Array();
+	
+	$("input[name='checkbox']:checked").each(function() {
+		let item = $(this).val();
+		chkArray.push(item);
+	});
+
+	if (chkArray.length < 1) {
+		alert("값을 선택해주시기 바랍니다.");
+		return;
+	}
+	
+	deletePlayer(chkArray);
+
+}
+
+
+function deletePlayer(id) {
+	
+	
+	$.ajax("/Player/delete/", {
+		type: "DELETE",
+		dataType: "json",
+		data:{deletelist:id},
+		Headers:{
+			"Content-Type":"application/x-www-form-urlencoded; charset=UTF-8"
+		}
 	}).done((res)=>{
 		if(res.code == 1){
-			alert(res.msg);
+			alert("삭제 완료");
 			location.href="/player";
-		}else{
-			alert("삭제실패");
-			return;
 		}
 	});
 }
@@ -30,10 +56,10 @@ function createPlayer() {
 		position: $("#position").val()
 
 	}
-	if(checkValidation(team, 1)){
+	if (checkValidation(team, 1)) {
 		return;
 	}
-	
+
 
 	$.ajax("/player/create", {
 		type: "POST",
