@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.baseball.domain.stadium.Stadium;
 import com.example.baseball.service.StadiumService;
 import com.example.baseball.web.dto.ResponseDto;
-import com.example.baseball.web.dto.request.StadiumDto;
+import com.example.baseball.web.dto.request.stadium.StadiumDto;
 
 import lombok.RequiredArgsConstructor;
 

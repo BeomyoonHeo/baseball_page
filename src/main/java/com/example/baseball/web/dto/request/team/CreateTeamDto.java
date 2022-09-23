@@ -1,4 +1,4 @@
-package com.example.baseball.web.dto.request;
+package com.example.baseball.web.dto.request.team;
 
 import lombok.Getter;
 import lombok.Setter;

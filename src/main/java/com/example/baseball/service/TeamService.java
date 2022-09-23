@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import com.example.baseball.domain.player.PlayerDao;
 import com.example.baseball.domain.team.Team;
 import com.example.baseball.domain.team.TeamDao;
-import com.example.baseball.web.dto.request.CreateTeamDto;
-import com.example.baseball.web.dto.response.PlayerListDto;
-import com.example.baseball.web.dto.response.TeamListDto;
+import com.example.baseball.web.dto.request.team.CreateTeamDto;
+import com.example.baseball.web.dto.response.player.PlayerListDto;
+import com.example.baseball.web.dto.response.team.TeamListDto;
 
 import lombok.RequiredArgsConstructor;
 

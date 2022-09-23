@@ -7,6 +7,6 @@ import com.example.baseball.web.dto.response.expulsion.ExpulsionDto;
 
 public interface ExpulsionDao {
 	
-	public List<ExpulsionDto> findAll();
+	public List<Expulsion> findAll();
 	public void insert(CreateExpulsionDto dto);
 }

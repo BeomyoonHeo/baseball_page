@@ -19,7 +19,7 @@
 				<td>${player.ROW}</td>
 				<td>${player.teamname}</td>
 				<td>${player.position}</td>
-				<td>${player.name}</td>
+				<td>${player.playername}</td>
 				<td>${player.reason}</td>
 				<td>${player.createDate}</td>
 			</tr>

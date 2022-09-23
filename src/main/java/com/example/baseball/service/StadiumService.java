@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 
 import com.example.baseball.domain.stadium.Stadium;
 import com.example.baseball.domain.stadium.StadiumDao;
-import com.example.baseball.web.dto.request.StadiumDto;
+import com.example.baseball.web.dto.request.stadium.StadiumDto;
 
 import lombok.RequiredArgsConstructor;
 

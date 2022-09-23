@@ -6,7 +6,7 @@
 
 
 	<select id="findAll"
-		resultType="com.example.baseball.web.dto.response.PlayerListDto">
+		resultType="com.example.baseball.web.dto.response.player.PlayerListDto">
 		SELECT id, (SELECT NAME FROM team t WHERE t.id = p.teamId)
 		teamname,
 		p.name,p.position ,DATE_FORMAT(p.createDate,

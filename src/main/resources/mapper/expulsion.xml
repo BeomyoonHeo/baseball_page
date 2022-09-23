@@ -7,16 +7,23 @@
 
 
 	<select id="findAll"
-		resultType="com.example.baseball.web.dto.response.expulsion.ExpulsionDto">
-		SELECT ROW_NUMBER() OVER (ORDER BY e.playerid ASC) AS ROW,
-		(SELECT NAME FROM team t WHERE t.id = p.teamId) teamname, p.position,
-		p.name, e.reason, DATE_FORMAT(e.createDate, '%Y년-%m월-%d일')createDate
-		FROM expulsion e JOIN player p ON p.id = e.playerId;
+		resultType="com.example.baseball.domain.expulsion.Expulsion">
+		SELECT reason, teamname, POSITION, playername, playerid,
+		DATE_FORMAT(createDate, '%Y년-%m월-%d일')createDate, ROW_NUMBER() OVER
+		(ORDER BY playerid ASC) AS ROW
+		FROM expulsion
 	</select>
 
 	<insert id="insert">
-		INSERT INTO expulsion(reason, playerId, createDate)
-		VALUE(#{reason}, #{playerId}, NOW());
+		INSERT INTO expulsion(reason, teamname, POSITION,
+		playername, playerId,
+		createDate)
+		VALUE (#{reason},(SELECT NAME FROM
+		team WHERE id = (SELECT teamid FROM
+		player WHERE id = #{playerId})),
+		(SELECT POSITION FROM player WHERE id = #{playerId}),
+		(SELECT NAME FROM
+		player WHERE id = #{playerId}), #{playerId}, NOW());
 	</insert>
 
 	<delete id="deleteById">

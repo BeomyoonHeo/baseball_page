@@ -19,11 +19,11 @@ import com.example.baseball.service.PlayerService;
 import com.example.baseball.service.StadiumService;
 import com.example.baseball.service.TeamService;
 import com.example.baseball.web.dto.ResponseDto;
-import com.example.baseball.web.dto.request.CreatePlayerDto;
-import com.example.baseball.web.dto.request.StadiumDto;
-import com.example.baseball.web.dto.response.PlayerListDto;
-import com.example.baseball.web.dto.response.TeamListDto;
+import com.example.baseball.web.dto.request.player.CreatePlayerDto;
+import com.example.baseball.web.dto.request.stadium.StadiumDto;
+import com.example.baseball.web.dto.response.player.PlayerListDto;
 import com.example.baseball.web.dto.response.player.PlayerPositionForGroup;
+import com.example.baseball.web.dto.response.team.TeamListDto;
 
 import lombok.RequiredArgsConstructor;
 

@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.baseball.domain.player.PlayerDao;
-import com.example.baseball.web.dto.request.CreatePlayerDto;
-import com.example.baseball.web.dto.response.PlayerListDto;
+import com.example.baseball.web.dto.request.player.CreatePlayerDto;
+import com.example.baseball.web.dto.response.player.PlayerListDto;
 import com.example.baseball.web.dto.response.player.PlayerPositionForGroup;
 
 import lombok.RequiredArgsConstructor;

@@ -2,7 +2,7 @@ package com.example.baseball.domain.stadium;
 
 import java.util.List;
 
-import com.example.baseball.web.dto.request.StadiumDto;
+import com.example.baseball.web.dto.request.stadium.StadiumDto;
 
 public interface StadiumDao {
 	public List<Stadium> findAll();

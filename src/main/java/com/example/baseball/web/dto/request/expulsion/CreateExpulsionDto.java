@@ -8,6 +8,4 @@ import lombok.Setter;
 public class CreateExpulsionDto {
 	private Integer playerId;
 	private String reason;
-	
-
 }
