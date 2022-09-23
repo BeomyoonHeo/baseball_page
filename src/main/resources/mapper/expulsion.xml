@@ -15,8 +15,8 @@
 	</select>
 
 	<insert id="insert">
-		INSERT INTO expulsion(reasion, playerId, createDate)
-		VALUE(#{reasion}, #{playerId}, NOW());
+		INSERT INTO expulsion(reason, playerId, createDate)
+		VALUE(#{reason}, #{playerId}, NOW());
 	</insert>
 
 	<delete id="deleteById">

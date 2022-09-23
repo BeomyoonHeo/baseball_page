@@ -1,5 +1,5 @@
 $("#btnConfirm").click(()=>{
-	
+	createExpulsion();
 })
 
 
@@ -43,10 +43,10 @@ function deletePlayer(id) {
 
 function createExpulsion() {
 	let expulsion = {
-		playerid: $("#teamlist").val(),
+		playerId: $("#teamlist").val(),
 		reason: $("#reason").val()
 	}
-	$.ajax("/expulsion/create", {
+		$.ajax("/expulsion/create", {
 		type: "POST",
 		dataType: "json",
 		data: JSON.stringify(expulsion),
@@ -63,4 +63,5 @@ function createExpulsion() {
 			return;
 		}
 	});
+
 }

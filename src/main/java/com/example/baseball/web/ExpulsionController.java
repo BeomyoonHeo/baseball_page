@@ -5,9 +5,14 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.baseball.service.ExpulsionService;
 import com.example.baseball.service.PlayerService;
+import com.example.baseball.web.dto.ResponseDto;
+import com.example.baseball.web.dto.request.expulsion.CreateExpulsionDto;
 import com.example.baseball.web.dto.response.PlayerListDto;
 import com.example.baseball.web.dto.response.expulsion.ExpulsionDto;
 
@@ -27,10 +32,16 @@ public class ExpulsionController {
 	}
 	
 	@GetMapping("/join_expulsion_form")
-	public String createExpulsion(Model model) {
+	public String createExpulsionForm(Model model) {
 		List<PlayerListDto> list = playerService.플레이어전체보기();
 		model.addAttribute("playerlist", list);
 		return "/expulsion/createExpulsion";
+	}
+	
+	@PostMapping("/expulsion/create")
+	public @ResponseBody ResponseDto<?> createExpulsion(@RequestBody CreateExpulsionDto expulsionDto){
+		expulsionService.퇴출선수등록(expulsionDto);
+		return new ResponseDto<>(1, "퇴출등록완료", null);
 	}
 
 }
