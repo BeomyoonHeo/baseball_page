@@ -3,7 +3,13 @@
 <%@ include file="../layout/header.jsp"%>
 <h1 style="text-align: center">선수 목록 페이지 입니다.</h1>
 <div class="container mt-3">
-<div style="text-align: right"><button id="btnDelete" class="btn btn-danger">삭제하기</button></div>
+<div style="text-align: right">
+<select id="teamgroup">
+<c:forEach var="team" items="${teamlist}">
+<option value="${team.name}">${team.name}</option>
+</c:forEach>
+</select>
+<button id="btnDelete" class="btn btn-danger">삭제하기</button></div>
 	<table class="table table-bordered" style="text-align: center">
 		<thead>
 			<tr>
@@ -16,10 +22,11 @@
 				<th>삭제</th>
 			</tr>
 		</thead>
+		<tbody>
 		<c:forEach var="player" items="${playerlist}">
 			<tr>
 				<td>${player.ROW}</td>
-				<td>${player.teamname}</td>
+				<td><p class="teamname">${player.teamname}</p></td>
 				<td>${player.position}</td>
 				<td>${player.name}</td>
 				<td>${player.createDate}</td>
@@ -27,6 +34,7 @@
 				<td><input class="form-check-input" type="checkbox" name="checkbox" value="${player.id}"></td>
 			</tr>
 		</c:forEach>
+		</tbody>
 	</table>
 </div>
 <script src="/js/player.js"></script>

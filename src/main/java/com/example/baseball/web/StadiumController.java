@@ -2,6 +2,7 @@ package com.example.baseball.web;
 
 import java.util.List;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,7 +24,7 @@ import lombok.RequiredArgsConstructor;
 @Controller
 public class StadiumController {
 	
-	public final StadiumService stadiumService;
+	private final StadiumService stadiumService;
 	
 	@GetMapping({"/", "/stadium"})
 	public String test(Model model) {
@@ -49,7 +50,6 @@ public class StadiumController {
 	
 	@GetMapping("/stadium/update/{id}")
 	public String stadiumUpdateForm(@PathVariable Integer id) {
-		System.out.println(id);
 		return null;
 	}
 	

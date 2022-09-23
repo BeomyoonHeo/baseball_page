@@ -6,15 +6,25 @@ $("#btnConfirm").click(() => {
 	createPlayer();
 });
 
-$("#btnDelete").click(()=>{
+$("#btnDelete").click(() => {
 	DeletePlayerList();
 })
+
+$("#teamgroup").click(() => {
+	let chkArray = new Array();
+	$("p[class='teamname']").each(function() {
+		let item = $(this).val();
+		chkArray.push(item);
+	});
+	console.log(chkArray);
+})
+
 
 
 function DeletePlayerList() {
 
 	let chkArray = new Array();
-	
+
 	$("input[name='checkbox']:checked").each(function() {
 		let item = $(this).val();
 		chkArray.push(item);
@@ -24,26 +34,26 @@ function DeletePlayerList() {
 		alert("값을 선택해주시기 바랍니다.");
 		return;
 	}
-	
+
 	deletePlayer(chkArray);
 
 }
 
 
 function deletePlayer(id) {
-	
-	
+
+
 	$.ajax("/Player/delete/", {
 		type: "DELETE",
 		dataType: "json",
-		data:{deletelist:id},
-		Headers:{
-			"Content-Type":"application/x-www-form-urlencoded; charset=UTF-8"
+		data: { deletelist: id },
+		Headers: {
+			"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
 		}
-	}).done((res)=>{
-		if(res.code == 1){
+	}).done((res) => {
+		if (res.code == 1) {
 			alert("삭제 완료");
-			location.href="/player";
+			location.href = "/player";
 		}
 	});
 }

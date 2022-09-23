@@ -11,7 +11,7 @@
 		teamname,
 		p.name,p.position ,DATE_FORMAT(p.createDate,
 		'%Y년-%m월-%d일')createDate,
-		ROW_NUMBER() OVER (ORDER BY p.name DESC) AS ROW FROM player p
+		ROW_NUMBER() OVER (ORDER BY p.name ASC) AS ROW FROM player p
 	</select>
 
 	<select id="findGroupForPosition"

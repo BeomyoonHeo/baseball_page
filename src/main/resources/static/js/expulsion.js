@@ -2,6 +2,9 @@ $("#btnConfirm").click(()=>{
 	createExpulsion();
 })
 
+function teamfilter(data){
+}
+
 
 function DeletePlayerList() {
 

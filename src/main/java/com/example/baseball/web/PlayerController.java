@@ -37,7 +37,9 @@ public class PlayerController {
 	@GetMapping("/player")
 	public String playerList(Model model) {
 		List<PlayerListDto> list = playerService.플레이어전체보기();
+		List<TeamListDto> list2 = teamService.팀전체보기();
 		model.addAttribute("playerlist", list);
+		model.addAttribute("teamlist", list2);
 		return "/player/main";
 	}
 	

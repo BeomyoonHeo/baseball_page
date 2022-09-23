@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.baseball.domain.expulsion.Expulsion;
 import com.example.baseball.service.ExpulsionService;
 import com.example.baseball.service.PlayerService;
+import com.example.baseball.service.TeamService;
 import com.example.baseball.web.dto.ResponseDto;
 import com.example.baseball.web.dto.request.expulsion.CreateExpulsionDto;
 import com.example.baseball.web.dto.response.expulsion.ExpulsionDto;
 import com.example.baseball.web.dto.response.player.PlayerListDto;
+import com.example.baseball.web.dto.response.team.TeamListDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,10 +27,13 @@ public class ExpulsionController {
 	
 	private final ExpulsionService expulsionService;
 	private final PlayerService playerService;
+	private final TeamService teamService;
 	@GetMapping("/expulsion")
 	public String expulsionMain(Model model) {
 		List<Expulsion> list = expulsionService.퇴출선수목록보기();
+		List<TeamListDto> list2 = teamService.팀전체보기();
 		model.addAttribute("playerlist", list);
+		model.addAttribute("teamlist", list2);
 		return "/expulsion/main";
 	}
 	
