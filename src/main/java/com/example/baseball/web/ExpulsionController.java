@@ -29,6 +29,8 @@ public class ExpulsionController {
 	private final ExpulsionService expulsionService;
 	private final PlayerService playerService;
 	private final TeamService teamService;
+	
+	
 	@GetMapping({"/expulsion/{id}", "/expulsion"})
 	public String expulsionMain(@PathVariable(required = false) Integer id, Model model) {
 		List<ExpulsionDto> list = expulsionService.퇴출선수목록보기(id);
@@ -36,6 +38,14 @@ public class ExpulsionController {
 		model.addAttribute("playerlist", list);
 		model.addAttribute("teamlist", list2);
 		return "/expulsion/main";
+	}
+	
+	
+	@GetMapping("/expulsion/team/{id}")
+	public @ResponseBody ResponseDto<?> teamForm(@PathVariable Integer id){
+		
+		List<ExpulsionDto> list = expulsionService.퇴출선수목록보기(id);
+		return new ResponseDto<>(1, "완료", list);
 	}
 	
 	@GetMapping("/join_expulsion_form")

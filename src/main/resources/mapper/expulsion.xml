@@ -14,7 +14,7 @@
 		FROM expulsion e inner JOIN player p
 		ON e.playerId = p.id
 		<if test="id != null">
-		WHERE e.playerId = #{id}
+		WHERE p.teamid = #{id}
 		</if>
 	</select>
 

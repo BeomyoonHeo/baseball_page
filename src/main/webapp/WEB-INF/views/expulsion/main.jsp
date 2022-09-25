@@ -5,7 +5,7 @@
 <div class="container mt-3">
 	<div style="text-align: center;">
 		<c:forEach var="team" items="${teamlist}">
-			<button class="btn" id="btn"+"${team.id}" type="button" onclick='teamfilter("${team.id}")' value="${team.name}">${team.name}</button>
+			<button class="btn" type="button" onclick='teamfilter("${team.id}")' value="${team.name}">${team.name}</button>
 		</c:forEach>
 	</div>
 	<table class="table table-bordered" style="text-align: center">
