@@ -10,15 +10,34 @@ $("#btnDelete").click(() => {
 	DeletePlayerList();
 })
 
-$("#teamgroup").click(() => {
-	let chkArray = new Array();
-	$("p[class='teamname']").each(function() {
-		let item = $(this).val();
-		chkArray.push(item);
-	});
-	console.log(chkArray);
+$("#teamgroup").change(()=>{
+	groupForTeam($("#teamgroup").val());
 })
 
+function groupForTeam(id){
+	
+	$.ajax("/player/groupteam/"+id,{
+		
+		type:"GET",
+		dataType:"json"
+	}).done((res)=>{
+		if(res.code == 1){
+			console.log(res.data)
+			$("#table tr").remove();
+			res.data.forEach((o, i)=>{
+				
+				$("#table").append('<tr><td>'+o.row+'</td>'+
+				'<td>'+o.name+'</td>'+
+				'<td>'+o.position+'</td>'+
+				'<td>'+o.name+'</td>'+
+				'<td>'+o.createDate+'</td>'+
+				'<td><a href="/player/update/'+o.id+'">수정</a></td>'+
+				'<td><input class="form-check-input" type="checkbox" name="checkbox" value="'+o.id+'"></td></tr>');
+			});
+		}
+	});
+	
+}
 
 
 function DeletePlayerList() {

@@ -12,6 +12,9 @@
 		p.name,p.position ,DATE_FORMAT(p.createDate,
 		'%Y년-%m월-%d일')createDate,
 		ROW_NUMBER() OVER (ORDER BY p.name ASC) AS ROW FROM player p
+		<if test="id != null">
+		WHERE teamid = #{id}
+		</if>
 	</select>
 
 	<select id="findGroupForPosition"

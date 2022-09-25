@@ -17,9 +17,9 @@ import lombok.RequiredArgsConstructor;
 public class PlayerService {
 	private final PlayerDao playerDao;
 	
-	public List<PlayerListDto> 플레이어전체보기(){
+	public List<PlayerListDto> 플레이어전체보기(Integer id){
 		
-		List<PlayerListDto> list = playerDao.findAll();
+		List<PlayerListDto> list = playerDao.findAll(id);
 		return list;
 	}
 	

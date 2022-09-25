@@ -17,9 +17,6 @@ function teamfilter(data) {
 			});
 		}
 	});
-	//$("#table tr").each(function(){
-	//console.log($(this).find("td").text());
-	//})
 }
 
 

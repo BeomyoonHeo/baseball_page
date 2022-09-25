@@ -6,7 +6,7 @@
 <div style="text-align: right">
 <select id="teamgroup">
 <c:forEach var="team" items="${teamlist}">
-<option value="${team.name}">${team.name}</option>
+<option value="${team.id}">${team.name}</option>
 </c:forEach>
 </select>
 <button id="btnDelete" class="btn btn-danger">삭제하기</button></div>
@@ -22,11 +22,11 @@
 				<th>삭제</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody id="table">
 		<c:forEach var="player" items="${playerlist}">
 			<tr>
 				<td>${player.ROW}</td>
-				<td><p class="teamname">${player.teamname}</p></td>
+				<td>${player.teamname}</td>
 				<td>${player.position}</td>
 				<td>${player.name}</td>
 				<td>${player.createDate}</td>

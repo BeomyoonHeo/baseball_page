@@ -50,7 +50,7 @@ public class ExpulsionController {
 	
 	@GetMapping("/join_expulsion_form")
 	public String createExpulsionForm(Model model) {
-		List<PlayerListDto> list = playerService.플레이어전체보기();
+		List<PlayerListDto> list = playerService.플레이어전체보기(null);
 		model.addAttribute("playerlist", list);
 		return "/expulsion/createExpulsion";
 	}

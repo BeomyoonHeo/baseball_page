@@ -8,7 +8,7 @@ import com.example.baseball.web.dto.response.player.PlayerPositionForGroup;
 
 public interface PlayerDao {
 	
-	public List<PlayerListDto> findAll();
+	public List<PlayerListDto> findAll(Integer id);
 	public void insert(CreatePlayerDto createPlayerDto);
 	public void deleteById(Integer id);
 	public List<PlayerPositionForGroup> findGroupForPosition();
