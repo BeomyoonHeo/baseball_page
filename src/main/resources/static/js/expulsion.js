@@ -1,8 +1,14 @@
+let expulsionlist = new Array();
+
 $("#btnConfirm").click(()=>{
 	createExpulsion();
 })
 
 function teamfilter(data){
+	
+	$("#table tr").each(function(){
+		console.log($(this).find("td").text());
+	})
 }
 
 

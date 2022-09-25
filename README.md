@@ -30,7 +30,7 @@ CREATE TABLE team(
     createDate timestamp
 ) engine=InnoDB default charset=utf8;
 
-##선수
+##선수 - 퇴출유무 행 추가해주기
 CREATE TABLE player(
 	id int auto_increment primary key,
     name varchar(100) unique not null,

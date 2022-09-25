@@ -20,8 +20,8 @@ public class ExpulsionService {
 	
 	private final ExpulsionDao expulsionDao;
 	private final PlayerDao playerDao;
-	public List<Expulsion>퇴출선수목록보기(){
-		List<Expulsion> list = expulsionDao.findAll();
+	public List<ExpulsionDto>퇴출선수목록보기(Integer id){
+		List<ExpulsionDto> list = expulsionDao.findAll(id);
 		return list;
 	}
 	

@@ -11,4 +11,5 @@ public class Player {
 	private Integer teamId;
 	private String position;
 	private String createDate;
+	private boolean expulsion;
 }
