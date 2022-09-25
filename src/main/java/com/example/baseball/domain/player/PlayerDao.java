@@ -12,4 +12,5 @@ public interface PlayerDao {
 	public void insert(CreatePlayerDto createPlayerDto);
 	public void deleteById(Integer id);
 	public List<PlayerPositionForGroup> findGroupForPosition();
+	public void update(Integer id);
 }

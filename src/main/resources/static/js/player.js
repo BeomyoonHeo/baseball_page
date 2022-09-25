@@ -11,6 +11,9 @@ $("#btnDelete").click(() => {
 })
 
 $("#teamgroup").change(()=>{
+	if($("#teamgroup").val()==null){
+		groupForTeam(null);
+	}
 	groupForTeam($("#teamgroup").val());
 })
 

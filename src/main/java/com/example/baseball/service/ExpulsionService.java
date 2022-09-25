@@ -28,7 +28,7 @@ public class ExpulsionService {
 	//@Transactional(rollbackFor = RuntimeException.class)
 	public void 퇴출선수등록(CreateExpulsionDto dto) {
 		expulsionDao.insert(dto);
-		playerDao.deleteById(dto.getPlayerId());
+		playerDao.update(dto.getPlayerId());
 	}
 
 }

@@ -5,6 +5,7 @@
 <div class="container mt-3">
 <div style="text-align: right">
 <select id="teamgroup">
+<option value=0>==전체보기==</option>
 <c:forEach var="team" items="${teamlist}">
 <option value="${team.id}">${team.name}</option>
 </c:forEach>

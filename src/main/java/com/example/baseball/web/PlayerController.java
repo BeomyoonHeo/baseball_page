@@ -45,6 +45,9 @@ public class PlayerController {
 	
 	@GetMapping("/player/groupteam/{id}")
 	public @ResponseBody ResponseDto<?> playerListToGroup(@PathVariable Integer id){
+		if(id == 0) {
+			id = null;
+		}
 		List<PlayerListDto> list = playerService.플레이어전체보기(id);
 		return new ResponseDto<>(1, "완료", list);
 	}

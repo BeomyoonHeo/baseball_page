@@ -12,8 +12,9 @@
 		p.name,p.position ,DATE_FORMAT(p.createDate,
 		'%Y년-%m월-%d일')createDate,
 		ROW_NUMBER() OVER (ORDER BY p.name ASC) AS ROW FROM player p
+		WHERE p.expulsion is null
 		<if test="id != null">
-		WHERE teamid = #{id}
+		AND teamid = #{id}
 		</if>
 	</select>
 
@@ -44,7 +45,7 @@
 	</delete>
 
 	<update id="update">
-		UPDATE player SET name = #{name} WHERE id =#{id}
+		UPDATE player SET expulsion = 1 WHERE id =#{id}
 	</update>
 
 

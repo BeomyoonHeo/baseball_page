@@ -1,33 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper
-	namespace="com.example.baseball.domain.expulsion.ExpulsionDao">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.baseball.domain.expulsion.ExpulsionDao">
 
 
-	<select id="findAll"
-		resultType="com.example.baseball.web.dto.response.expulsion.ExpulsionDto">
-		SELECT ROW_NUMBER() OVER (ORDER BY playerid ASC) AS ROW,
+	<select id="findAll" resultType="com.example.baseball.web.dto.response.expulsion.ExpulsionDto">
+		SELECT ROW_NUMBER() OVER (ORDER BY p.name ASC) AS ROW,
 		(SELECT NAME FROM team t WHERE p.teamid = t.id) teamname,
-		p.position, p.name, e.reason, DATE_FORMAT(e.createDate, '%Y년-%m월-%d일')createDate
-		FROM expulsion e inner JOIN player p
-		ON e.playerId = p.id
+		p.position, p.name, if(e.reason is NULL, "", e.reason) reason, if(e.createDate is NULL, "--------------------", DATE_FORMAT(e.createDate, '%Y년-%m월-%d일')) createDate
+		FROM player p  LEFT OUTER JOIN expulsion e
+		ON p.id = playerid
 		<if test="id != null">
 		WHERE p.teamid = #{id}
 		</if>
+		
 	</select>
 
 	<insert id="insert">
-		INSERT INTO expulsion(reason, teamname, POSITION,
-		playername, playerId,
-		createDate)
-		VALUE (#{reason},(SELECT NAME FROM
-		team WHERE id = (SELECT teamid FROM
-		player WHERE id = #{playerId})),
-		(SELECT POSITION FROM player WHERE id = #{playerId}),
-		(SELECT NAME FROM
-		player WHERE id = #{playerId}), #{playerId}, NOW());
+		INSERT INTO expulsion(reason, playerId, createDate)
+		VALUE (#{reason}, #{playerId}, NOW())
 	</insert>
 
 	<delete id="deleteById">

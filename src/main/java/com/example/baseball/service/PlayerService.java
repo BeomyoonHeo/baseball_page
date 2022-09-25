@@ -32,6 +32,10 @@ public class PlayerService {
 		playerDao.insert(createPlayerDto);
 	}
 	
+	public void 플레이어정보수정(Integer id) {
+		playerDao.update(id);
+	}
+	
 	@Transactional(rollbackFor = {RuntimeException.class})
 	public void 플레이어삭제(List<Integer> id) {
 		for (Integer integer : id) {
