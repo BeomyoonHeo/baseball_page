@@ -1,6 +1,6 @@
 package com.example.baseball.web;
 
-import java.sql.Array;
+
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -12,15 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.example.baseball.domain.player.PlayerDao;
-import com.example.baseball.domain.stadium.Stadium;
 import com.example.baseball.service.PlayerService;
-import com.example.baseball.service.StadiumService;
 import com.example.baseball.service.TeamService;
 import com.example.baseball.web.dto.ResponseDto;
 import com.example.baseball.web.dto.request.player.CreatePlayerDto;
-import com.example.baseball.web.dto.request.stadium.StadiumDto;
 import com.example.baseball.web.dto.response.player.PlayerListDto;
 import com.example.baseball.web.dto.response.player.PlayerPositionForGroup;
 import com.example.baseball.web.dto.response.team.TeamListDto;

@@ -36,7 +36,7 @@ public class PlayerService {
 		playerDao.update(id);
 	}
 	
-	@Transactional(rollbackFor = {RuntimeException.class})
+	@Transactional(rollbackFor = RuntimeException.class)
 	public void 플레이어삭제(List<Integer> id) {
 		for (Integer integer : id) {
 			playerDao.deleteById(integer);

@@ -20,12 +20,13 @@ public class ExpulsionService {
 	
 	private final ExpulsionDao expulsionDao;
 	private final PlayerDao playerDao;
+	
 	public List<ExpulsionDto>퇴출선수목록보기(Integer id){
 		List<ExpulsionDto> list = expulsionDao.findAll(id);
 		return list;
 	}
 	
-	//@Transactional(rollbackFor = RuntimeException.class)
+	@Transactional(rollbackFor = RuntimeException.class)
 	public void 퇴출선수등록(CreateExpulsionDto dto) {
 		expulsionDao.insert(dto);
 		playerDao.update(dto.getPlayerId());

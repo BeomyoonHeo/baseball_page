@@ -27,7 +27,6 @@ import lombok.RequiredArgsConstructor;
 public class TeamController {
 	
 	private final TeamService teamService;
-	private final StadiumService stadiumService;
 	
 	@GetMapping("/team")
 	public String test(Model model) {
@@ -38,7 +37,7 @@ public class TeamController {
 	
 	@GetMapping("/join_team_form")
 	public String joinStardiumForm(Model model) {
-		List<Stadium> list = stadiumService.야구장목록보기();
+		List<Stadium> list = teamService.야구장목록보기();
 		model.addAttribute("Stadiumlist", list);
 		return "/team/joinTeam";
 	}
@@ -53,6 +52,7 @@ public class TeamController {
 	public String stadiumUpdateForm(@PathVariable Integer id) {
 		return null;
 	}
+	
 	@DeleteMapping("/team/delete")
 	public @ResponseBody ResponseDto<?> stadiumDelete(@RequestParam(value = "deletelist[]") List<Integer> id) {
 		teamService.팀삭제(id);
