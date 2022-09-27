@@ -6,16 +6,26 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.baseball.domain.player.PlayerDao;
+import com.example.baseball.domain.team.TeamDao;
 import com.example.baseball.web.dto.request.player.CreatePlayerDto;
 import com.example.baseball.web.dto.response.player.PlayerListDto;
 import com.example.baseball.web.dto.response.player.PlayerPositionForGroup;
+import com.example.baseball.web.dto.response.team.TeamListDto;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class PlayerService {
+	
 	private final PlayerDao playerDao;
+	private final TeamDao teamDao;
+	
+	
+	public List<TeamListDto> 팀전체보기(){
+		List<TeamListDto> list = teamDao.findAll();
+		return list;
+	}
 	
 	public List<PlayerListDto> 플레이어전체보기(Integer id){
 		

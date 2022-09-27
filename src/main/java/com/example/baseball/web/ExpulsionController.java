@@ -27,14 +27,12 @@ import lombok.RequiredArgsConstructor;
 public class ExpulsionController {
 	
 	private final ExpulsionService expulsionService;
-	private final PlayerService playerService;
-	private final TeamService teamService;
 	
 	
 	@GetMapping({"/expulsion/{id}", "/expulsion"})
 	public String expulsionMain(@PathVariable(required = false) Integer id, Model model) {
 		List<ExpulsionDto> list = expulsionService.퇴출선수목록보기(id);
-		List<TeamListDto> list2 = teamService.팀전체보기();
+		List<TeamListDto> list2 = expulsionService.팀전체보기();
 		model.addAttribute("playerlist", list);
 		model.addAttribute("teamlist", list2);
 		return "/expulsion/main";
@@ -50,7 +48,7 @@ public class ExpulsionController {
 	
 	@GetMapping("/join_expulsion_form")
 	public String createExpulsionForm(Model model) {
-		List<PlayerListDto> list = playerService.플레이어전체보기(null);
+		List<PlayerListDto> list = expulsionService.플레이어전체보기(null);
 		model.addAttribute("playerlist", list);
 		return "/expulsion/createExpulsion";
 	}

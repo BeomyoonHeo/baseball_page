@@ -27,12 +27,11 @@ import lombok.RequiredArgsConstructor;
 public class PlayerController {
 	
 	private final PlayerService playerService;
-	private final TeamService teamService;
 	
 	@GetMapping("/player")
 	public String playerList(Model model) {
 		List<PlayerListDto> list = playerService.플레이어전체보기(null);
-		List<TeamListDto> list2 = teamService.팀전체보기();
+		List<TeamListDto> list2 = playerService.팀전체보기();
 		model.addAttribute("playerlist", list);
 		model.addAttribute("teamlist", list2);
 		return "/player/main";
@@ -56,7 +55,7 @@ public class PlayerController {
 	
 	@GetMapping("/join_player_form")
 	public String joinStardiumForm(Model model) {
-		List<TeamListDto> list = teamService.팀전체보기();
+		List<TeamListDto> list = playerService.팀전체보기();
 		model.addAttribute("teamlist", list);
 		return "/player/joinPlayer";
 	}
