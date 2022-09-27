@@ -18,6 +18,7 @@
 
 	<select id="findTeamName" resultType="string">
 		SELECT distinct name FROM team
+		ORDER BY id ASC
 	</select>
 
 	<select id="findByName"

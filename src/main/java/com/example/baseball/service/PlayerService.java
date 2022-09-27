@@ -33,16 +33,22 @@ public class PlayerService {
 		return list;
 	}
 	
+	public List<String> 포지션가져오기(){
+		List<String> list = playerDao.findPosition();
+		return list;
+	}
+	
 	public List<PlayerListDto> 플레이어전체보기(Integer id){
 		
 		List<PlayerListDto> list = playerDao.findAll(id);
 		return list;
 	}
 	
-	public List<Map<String, Object>> 포지션별플레이어보기(){
+	public PlayerPositionForGroup 포지션별플레이어보기(){
 		List<String> list = 팀이름가져오기();
-		List<Map<String, Object>> list2 = playerDao.findGroupForPosition(list);
-		return list2;
+		List<String> list2 = 포지션가져오기();
+		List<Map<String, Object>> list3 = playerDao.findGroupForPosition(list);
+		return new PlayerPositionForGroup(list2, list, list3);
 	}
 	
 	public void 플레이어등록(CreatePlayerDto createPlayerDto) {

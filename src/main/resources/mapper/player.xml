@@ -19,15 +19,19 @@
 	</select>
 	
 	<select id="findGroupForPosition"
-		resultType="map">
-		SELECT
-		<foreach collection="list" item="item">
-		MAX(if(t.name = #{item}, p.name, null)) #{item}, 
+		resultType="java.util.LinkedHashMap">
+		SELECT 	position,
+		<foreach collection="list" item="item" separator=",">
+		MAX(if(t.name = #{item}, p.name, "")) #{item}
 		</foreach>
-		POSITION
 		FROM player p INNER JOIN team t
 		ON p.teamid = t.id
 		GROUP BY p.position
+	</select>
+	
+	<select id="findPosition" resultType="String">
+		SELECT distinct position FROM player
+		ORDER BY position ASC
 	</select>
 
 	<select id="findByName"

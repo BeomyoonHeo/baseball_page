@@ -13,6 +13,7 @@ public interface PlayerDao {
 	public List<PlayerListDto> findAll(Integer id);
 	public void insert(CreatePlayerDto createPlayerDto);
 	public void deleteById(Integer id);
+	public List<String> findPosition();
 	public List<Map<String, Object>> findGroupForPosition(@Param("list") List<String> list);
 	public void update(Integer id);
 }

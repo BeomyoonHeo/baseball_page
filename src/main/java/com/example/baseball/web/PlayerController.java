@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.baseball.service.PlayerService;
-import com.example.baseball.service.TeamService;
 import com.example.baseball.web.dto.ResponseDto;
 import com.example.baseball.web.dto.request.player.CreatePlayerDto;
 import com.example.baseball.web.dto.response.player.PlayerListDto;
@@ -47,12 +46,8 @@ public class PlayerController {
 	
 	@GetMapping("/player/position")
 	public String PlayerListForPosition(Model model) {
-		//List<PlayerPositionForGroup> list = playerService.포지션별플레이어보기();
-		List<Map<String, Object>> list = playerService.포지션별플레이어보기();
-		for (Map<String, Object> map : list) {
-			System.out.println(map.toString());
-		}
-		//model.addAttribute("playerlist", list);
+		PlayerPositionForGroup list = playerService.포지션별플레이어보기();
+		model.addAttribute("playerlist", list);
 		return "/player/groupforposition";
 	}
 	
