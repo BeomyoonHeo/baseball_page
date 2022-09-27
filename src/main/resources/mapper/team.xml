@@ -7,10 +7,17 @@
 
 	<select id="findAll"
 		resultType="com.example.baseball.web.dto.response.team.TeamListDto">
-		SELECT t.id, (SELECT s.NAME FROM stadium s WHERE s.id = t.stadiumid)
-		stadiumname, t.name, DATE_FORMAT(t.createDate, '%Y년-%m월-%d일')createDate,
-		ROW_NUMBER() OVER (ORDER BY t.name ASC) AS ROW
+		SELECT t.id, (SELECT s.NAME FROM stadium s WHERE s.id =
+		t.stadiumid)
+		stadiumname, t.name, DATE_FORMAT(t.createDate,
+		'%Y년-%m월-%d일')createDate,
+		ROW_NUMBER() OVER (ORDER BY t.name ASC) AS
+		ROW
 		FROM team t;
+	</select>
+
+	<select id="findTeamName" resultType="string">
+		SELECT distinct name FROM team
 	</select>
 
 	<select id="findByName"

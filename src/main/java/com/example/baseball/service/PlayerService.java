@@ -1,6 +1,7 @@
 package com.example.baseball.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,15 +28,21 @@ public class PlayerService {
 		return list;
 	}
 	
+	public List<String> 팀이름가져오기(){
+		List<String> list = teamDao.findTeamName();
+		return list;
+	}
+	
 	public List<PlayerListDto> 플레이어전체보기(Integer id){
 		
 		List<PlayerListDto> list = playerDao.findAll(id);
 		return list;
 	}
 	
-	public List<PlayerPositionForGroup> 포지션별플레이어보기(){
-		List<PlayerPositionForGroup> list = playerDao.findGroupForPosition();
-		return list;
+	public List<Map<String, Object>> 포지션별플레이어보기(){
+		List<String> list = 팀이름가져오기();
+		List<Map<String, Object>> list2 = playerDao.findGroupForPosition(list);
+		return list2;
 	}
 	
 	public void 플레이어등록(CreatePlayerDto createPlayerDto) {

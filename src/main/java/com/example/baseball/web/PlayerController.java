@@ -2,6 +2,7 @@ package com.example.baseball.web;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,17 +40,19 @@ public class PlayerController {
 	
 	@GetMapping("/player/groupteam/{id}")
 	public @ResponseBody ResponseDto<?> playerListToGroup(@PathVariable Integer id){
-		if(id == 0) {
-			id = null;
-		}
+		if(id == 0)id = null;
 		List<PlayerListDto> list = playerService.플레이어전체보기(id);
 		return new ResponseDto<>(1, "완료", list);
 	}
 	
 	@GetMapping("/player/position")
 	public String PlayerListForPosition(Model model) {
-		List<PlayerPositionForGroup> list = playerService.포지션별플레이어보기();
-		model.addAttribute("playerlist", list);
+		//List<PlayerPositionForGroup> list = playerService.포지션별플레이어보기();
+		List<Map<String, Object>> list = playerService.포지션별플레이어보기();
+		for (Map<String, Object> map : list) {
+			System.out.println(map.toString());
+		}
+		//model.addAttribute("playerlist", list);
 		return "/player/groupforposition";
 	}
 	

@@ -17,16 +17,17 @@
 		AND teamid = #{id}
 		</if>
 	</select>
-
+	
 	<select id="findGroupForPosition"
-		resultType="com.example.baseball.web.dto.response.player.PlayerPositionForGroup">
+		resultType="map">
 		SELECT
-		POSITION,
-		max(if(teamid=1, NAME, "")) group1,
-		max(if(teamid=2, NAME, "")) group2,
-		max(if(teamid=3, NAME, "")) group3
-		FROM player
-		GROUP BY position
+		<foreach collection="list" item="item">
+		MAX(if(t.name = #{item}, p.name, null)) #{item}, 
+		</foreach>
+		POSITION
+		FROM player p INNER JOIN team t
+		ON p.teamid = t.id
+		GROUP BY p.position
 	</select>
 
 	<select id="findByName"

@@ -7,6 +7,7 @@ import com.example.baseball.web.dto.response.team.TeamListDto;
 
 public interface TeamDao {
 	public List<TeamListDto> findAll();
+	public List<String> findTeamName();
 	public void insert(CreateTeamDto createTeamDto);
 	public void deleteById(Integer id);
 }
